@@ -12,6 +12,11 @@
     font-family: "Angle", serif;
     line-height: 0.9;
   }
+
+  .container {
+    width: 100% !important;
+    max-width: 1440px !important;
+  }
 }
 
 @layer utilities {

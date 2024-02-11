@@ -19,11 +19,11 @@ export default function Intro() {
   }, []);
 
   return (
-    <section className="h-screen container pt-[4rem] grid grid-cols-2 relative">
-      <div className="flex flex-col justify-between h-full items-start pb-[4rem]">
+    <section className="laptop:h-screen laptop:max-h-[800px] container pt-[64px] grid laptop:grid-cols-2 relative">
+      <div className="flex flex-col justify-between h-full gap-[48px] items-center laptop:items-start pb-[64px]">
         <Icon id="logo" className="h-[100px] w-[47px]" />
 
-        <h1 className="text-[100px]">
+        <h1 className="text-[70px] laptop:text-[100px] text-center laptop:text-center ">
           Vitória
           <br />
           &André
@@ -31,18 +31,18 @@ export default function Intro() {
 
         <div id="countdown" />
       </div>
-      <div className="bg-wine w-full h-full rounded-t-full relative">
+      <div className="bg-wine w-full h-fit laptop:h-full rounded-t-full relative max-w-[560px] mx-auto">
         <Image
           width={675}
           height={590}
           src="/polaroid.png"
           alt="Foto do Casal"
-          className="absolute top-[2rem] object-contain w-full h-[90%]"
+          className="laptop:absolute laptop:top-[32px] object-contain w-full h-[350px] mobile:h-[400px] laptop:h-[90%]"
         />
       </div>
       <Icon
         id="ramo"
-        className="absolute top-[4rem] right-0 w-[80px] h-[40px]"
+        className="absolute top-[64px] right-0 w-[80px] h-[40px] hidden laptop:block"
       />
     </section>
   );

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Gift({ name, image }: GiftProps) {
   return (
-    <div className="p-4 rounded-lg  bg-beige-medium h-full w-full">
+    <div className="p-4 rounded-lg  bg-beige-medium h-full w-full truncate">
       <Image
         src={image.url}
         width={image.width}

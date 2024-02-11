@@ -21,7 +21,7 @@ export default function Gifts() {
       {loading ? (
         <Loading />
       ) : (
-        <ul className="grid grid-cols-4 gap-4">
+        <ul className="grid grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-4">
           {gifts.map((gift, index) => (
             <li key={`gift-${index}`} className="col-span-1">
               <Gift {...gift} />

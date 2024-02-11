@@ -15,6 +15,17 @@ const config: Config = {
         laptop: "70px",
       },
     },
+
+    screens: {
+      micro: "360px",
+      mobile: "480px",
+      tablet: "767px",
+      laptop: "991px",
+      desktop: "1280px",
+      monitor: "1440px",
+      ultra: "1800px",
+    },
+
     extend: {
       colors: {
         green: "#687973",
