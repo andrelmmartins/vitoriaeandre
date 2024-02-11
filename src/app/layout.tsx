@@ -21,6 +21,16 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <title>Lista de Presentes · Vitória & André</title>
+        <meta
+          property="twitter:title"
+          content="Lista de Presentes · Vitória & André"
+        />
+        <meta
+          property="og:title"
+          content="Lista de Presentes · Vitória & André"
+        />
+        <meta property="twitter:image" content="/thumbnail.png" />
+        <meta property="og:image" content="/thumbnail.png" />
       </head>
       <body className={`bg-beige text-wine ${font.className}`}>
         <Providers>{children}</Providers>
