@@ -42,10 +42,10 @@ export default function Gift(gift: GiftProps) {
         <h3 className=" !leading-tight text-[12px] micro:text-sm mobile:text-lg tablet:text-xl font-bold w-full">
           {name}
         </h3>
-        <p className="text-sm font-bold text-wine-light hidden micro:block">
+        <p className="text-sm font-bold text-wine-light hidden mobile:block">
           Preço médio: {formatCurrency(price)}
         </p>
-        <p className="text-sm font-bold text-wine-light block micro:hidden">
+        <p className="text-sm font-bold text-wine-light block mobile:hidden">
           {formatCurrency(price)}
         </p>
       </div>

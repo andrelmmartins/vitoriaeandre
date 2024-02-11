@@ -33,21 +33,32 @@ export default function Gifts() {
   }, []);
 
   useEffect(() => {
-    setFilteredGifts(
-      gifts
-        .filter((gift) => {
-          if (!filter) return true;
-          else return gift.type === filter;
-        })
-        .sort((a, b) => {
-          if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
-          if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
-          if (!a.reservedBy && b.reservedBy) return -1;
-          if (a.reservedBy && !b.reservedBy) return 1;
-          return 0;
-        })
-    );
+    if (filter) {
+      setFilteredGifts(
+        gifts
+          .filter((gift) => gift.type === filter)
+          .sort((a, b) => {
+            if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
+            if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
+            if (!a.reservedBy && b.reservedBy) return -1;
+            if (a.reservedBy && !b.reservedBy) return 1;
+            return 0;
+          })
+      );
+    }
   }, [filter]);
+
+  useEffect(() => {
+    setFilteredGifts(
+      gifts.sort((a, b) => {
+        if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
+        if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
+        if (!a.reservedBy && b.reservedBy) return -1;
+        if (a.reservedBy && !b.reservedBy) return 1;
+        return 0;
+      })
+    );
+  }, []);
 
   return (
     <section className="flex flex-wrap gap-2 container pb-[50px]">
