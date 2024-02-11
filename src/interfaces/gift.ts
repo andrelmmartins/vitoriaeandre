@@ -1,4 +1,19 @@
-export type GiftType = "cozinha" | "quarto" | "banheiro" | "serviço" | "sala";
+export const giftTypes = [
+  "cozinha",
+  "quarto",
+  "banheiro",
+  "serviço",
+  "sala",
+] as const;
+export type GiftType = (typeof giftTypes)[number];
+
+export const translatedGiftType: Record<GiftType, string> = {
+  banheiro: "Banheiro",
+  cozinha: "Cozinha",
+  quarto: "Quarto",
+  sala: "Sala de Estar",
+  serviço: "Área de Serviço",
+};
 
 export interface Image {
   url: string;
