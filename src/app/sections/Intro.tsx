@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 
-import CountDown from "../components/CountDown";
+import CountDown, { CountDownSkeleton } from "../components/CountDown";
 import Icon from "../components/Icon";
 import Image from "next/image";
 
@@ -20,7 +20,7 @@ export default function Intro() {
 
   return (
     <section className="laptop:h-screen laptop:max-h-[800px] container pt-[64px] grid laptop:grid-cols-2">
-      <div className="flex flex-col justify-between h-full gap-[48px] items-center laptop:items-start pb-[64px]">
+      <div className="flex flex-col justify-between h-full gap-[48px] items-center laptop:items-start pb-[64px] relative">
         <Icon id="logo" className="h-[100px] w-[47px]" />
 
         <h1 className="text-[70px] laptop:text-[100px] text-center laptop:text-left text-angle">
@@ -29,15 +29,17 @@ export default function Intro() {
           &André
         </h1>
 
-        <div id="countdown" />
+        <CountDownSkeleton className="absolute bottom-[64px] left-1/2 -translate-x-1/2 laptop:translate-x-0 laptop:left-0" />
+
+        <div id="countdown" className="h-[81px]" />
       </div>
-      <div className="bg-wine w-full h-fit laptop:h-full rounded-t-full relative max-w-[560px] mx-auto">
+      <div className="bg-wine w-full h-fit laptop:h-full rounded-t-full relative max-w-[560px] mx-auto flex-1">
         <Image
           width={675}
           height={590}
           src="/polaroid.png"
           alt="Foto do Casal"
-          className="laptop:absolute laptop:top-[32px] object-contain w-full h-[350px] mobile:h-[400px] laptop:h-[90%]"
+          className="laptop:absolute laptop:top-[32px] object-contain flex-1 w-full h-[350px] mobile:h-[400px] laptop:h-[90%]"
           fetchPriority="high"
         />
         <Icon
