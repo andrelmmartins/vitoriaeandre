@@ -16,11 +16,8 @@ export default function Gift(gift: GiftProps) {
     >
       {reservedBy && (
         <>
-          <span className="bg-wine absolute top-[9%] left-[-15%] h-[24px] tablet:h-[30px] leading-none w-[120%] text-beige rotate-[-15deg] px-[20%] z-[1] text-sm tablet:text-md desktop:text-lg hidden mobile:flex items-center">
+          <span className="bg-wine shadow-md absolute top-[9%] left-[-15%] h-[30px] leading-none w-[125%] text-beige rotate-[-15deg] px-[20%] z-[1] text-[11px] micro:text-sm tablet:text-md desktop:text-lg flex items-center">
             {`Reservado para ${reservedToMe ? "Você" : reservedBy}`}
-          </span>
-          <span className="bg-wine absolute top-[9%] left-[-15%] h-[24px] tablet:h-[30px] leading-none w-[120%] text-beige rotate-[-15deg] px-[20%] z-[1] text-sm tablet:text-md desktop:text-lg flex mobile:hidden items-center">
-            {`Reservado`}
           </span>
         </>
       )}
@@ -42,11 +39,14 @@ export default function Gift(gift: GiftProps) {
         className="mt-[8px] tablet:mt-[16px] text-angle flex flex-col justify-between h-full"
         style={{ opacity: reservedToMe || !reservedBy ? 1 : 0.5 }}
       >
-        <h3 className="text-sm !leading-tight mobile:text-lg tablet:text-xl font-bold w-full">
+        <h3 className=" !leading-tight text-[12px] micro:text-sm mobile:text-lg tablet:text-xl font-bold w-full">
           {name}
         </h3>
-        <p className="text-sm font-bold text-wine-light">
+        <p className="text-sm font-bold text-wine-light hidden micro:block">
           Preço médio: {formatCurrency(price)}
+        </p>
+        <p className="text-sm font-bold text-wine-light block micro:hidden">
+          {formatCurrency(price)}
         </p>
       </div>
     </div>

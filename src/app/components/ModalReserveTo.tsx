@@ -86,7 +86,7 @@ export default function ModalReserveTo({ reloadGifts }: Props) {
         onClose={() => setGiftToReserve(undefined)}
         className="relative z-10"
       >
-        <div className="fixed inset-0 flex w-screen items-center justify-center bg-black bg-opacity-20 px-[24px]">
+        <div className="fixed inset-0 flex w-screen items-center justify-center bg-black bg-opacity-20 px-[16px] micro:px-[24px]">
           <Dialog.Panel className="w-full max-w-[450px] rounded-lg shadow-lg overflow-hidden">
             <div className="flex justify-between items-center bg-wine p-[16px] text-beige">
               <h2 className="text-lg mobile:text-xl text-angle font-bold ">

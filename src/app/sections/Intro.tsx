@@ -19,11 +19,11 @@ export default function Intro() {
   }, []);
 
   return (
-    <section className="laptop:h-screen laptop:max-h-[800px] container pt-[64px] grid laptop:grid-cols-2">
+    <section className="laptop:h-screen laptop:max-h-[800px] container pt-[64px] grid laptop:grid-cols-2 overflow-hidden">
       <div className="flex flex-col justify-between h-full gap-[48px] items-center laptop:items-start pb-[64px] relative">
         <Icon id="logo" className="h-[100px] w-[47px]" />
 
-        <h1 className="text-[70px] laptop:text-[100px] text-center laptop:text-left text-angle">
+        <h1 className="text-[60px] micro:text-[70px] laptop:text-[100px] text-center laptop:text-left text-angle">
           Vitória
           <br />
           &André

@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { parseCookies, setCookie } from "nookies";
 
 import * as airtable from "@/services/airtable";
 import { Gift, itsAValidGiftRecord } from "@/interfaces/gift";
@@ -57,7 +58,7 @@ export default function GiftProvider(props: { children: React.ReactNode }) {
         setGifts(gifts);
       }
     } catch (e) {
-      console.log(e);
+      console.log("list-gifts", e);
     }
   }
 
@@ -91,7 +92,7 @@ export default function GiftProvider(props: { children: React.ReactNode }) {
 
       return false;
     } catch (e) {
-      console.log(e);
+      console.log("reserve-gifts", e);
       return false;
     }
   }
@@ -100,38 +101,37 @@ export default function GiftProvider(props: { children: React.ReactNode }) {
     return giftsThatIReserve.includes(gift.id);
   }
 
-  const localStorageItem = "vitoriaeandre-gifts-that-i-reserve";
+  const cookieName = "vitoriaeandre-gifts-that-i-reserve";
 
   function loadGiftsThatIReserve() {
-    if (typeof window !== "undefined") {
-      const data = localStorage.getItem(localStorageItem);
+    const { [cookieName]: data } = parseCookies(undefined);
 
-      try {
-        if (data) {
-          const json = JSON.parse(data);
-          if (
-            json &&
-            json.giftsThatIReserve &&
-            Array.isArray(json.giftsThatIReserve)
-          ) {
-            const giftsThatIReserve = json.giftsThatIReserve.filter(
-              (g: any) => typeof g === "string"
-            );
+    try {
+      if (data) {
+        const json = JSON.parse(data);
+        if (
+          json &&
+          json.giftsThatIReserve &&
+          Array.isArray(json.giftsThatIReserve)
+        ) {
+          const giftsThatIReserve = json.giftsThatIReserve.filter(
+            (g: any) => typeof g === "string"
+          );
 
-            setGiftsThatIReserve(giftsThatIReserve);
-          }
+          setGiftsThatIReserve(giftsThatIReserve);
         }
-      } catch (e) {
-        console.log(e);
       }
+    } catch (e) {
+      console.log("get-data-from-cookie", e);
     }
   }
 
   function saveGiftThatIReserve(giftId: Gift["id"]) {
     const newGiftsThatIReserve = [...giftsThatIReserve, giftId];
 
-    localStorage.setItem(
-      "localStorageItem",
+    setCookie(
+      undefined,
+      cookieName,
       JSON.stringify({
         giftsThatIReserve: newGiftsThatIReserve,
       })
@@ -145,8 +145,9 @@ export default function GiftProvider(props: { children: React.ReactNode }) {
       (id) => id !== giftId
     );
 
-    localStorage.setItem(
-      "localStorageItem",
+    setCookie(
+      undefined,
+      cookieName,
       JSON.stringify({
         giftsThatIReserve: newGiftsThatIReserve,
       })

@@ -22,19 +22,21 @@ export default function CountDown({
 
         return (
           <div className="flex flex-col items-center">
-            <span className="block text-white bg-green text-sm leading-none px-[36px] py-[6px] z-[1] rounded-sm">
+            <span className="block text-white bg-green text-sm leading-none px-[20px] micro:px-[36px] py-[6px] z-[1] rounded-sm">
               Contagem regressiva
             </span>
             <div className="flex gap-[10px] -mt-[10px]">
               {numbers.map(({ label, number }) => (
                 <span
                   key={label}
-                  className="h-[65px] w-[65px] rounded bg-beige-medium text-center relative flex flex-col items-center justify-center"
+                  className="h-[50px] w-[50px] micro:h-[65px] micro:w-[65px] rounded bg-beige-medium text-center relative flex flex-col items-center justify-center"
                 >
-                  <h4 className="text-3xl">
+                  <h4 className="text-xl micro:text-3xl">
                     {number.toString().padStart(2, "0")}
                   </h4>
-                  <p className="text-[11px] absolute bottom-[3px]">{label}</p>
+                  <p className="text-[9px] micro:text-[11px] absolute bottom-[3px]">
+                    {label}
+                  </p>
                 </span>
               ))}
             </div>
@@ -57,17 +59,21 @@ export function CountDownSkeleton(props: {
 
   return (
     <div className={`flex flex-col items-center ${props.className}`}>
-      <span className="block text-white bg-green text-sm leading-none px-[36px] py-[6px] z-[1] rounded-sm">
+      <span className="block text-white bg-green text-sm leading-none px-[20px] micro:px-[36px] py-[6px] z-[1] rounded-sm">
         Contagem regressiva
       </span>
       <div className="flex gap-[10px] -mt-[10px]">
         {numbers.map(({ label, number }) => (
           <span
             key={label}
-            className="h-[65px] w-[65px] rounded bg-beige-medium text-center relative flex flex-col items-center justify-center"
+            className="h-[50px] w-[50px] micro:h-[65px] micro:w-[65px] rounded bg-beige-medium text-center relative flex flex-col items-center justify-center"
           >
-            <h4 className="text-3xl">{number.toString().padStart(2, "0")}</h4>
-            <p className="text-[11px] absolute bottom-[3px]">{label}</p>
+            <h4 className="text-xl micro:text-3xl">
+              {number.toString().padStart(2, "0")}
+            </h4>
+            <p className="text-[9px] micro:text-[11px] absolute bottom-[3px]">
+              {label}
+            </p>
           </span>
         ))}
       </div>

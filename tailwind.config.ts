@@ -10,7 +10,8 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        DEFAULT: "24px",
+        DEFAULT: "16px",
+        micro: "24px",
         mobile: "50px",
         laptop: "70px",
       },
