@@ -31,9 +31,9 @@ export default function Intro() {
 
         <CountDownSkeleton className="absolute bottom-[64px] left-1/2 -translate-x-1/2 laptop:translate-x-0 laptop:left-0" />
 
-        <div id="countdown" className="h-[81px]" />
+        <div id="countdown" className="h-[81px] flex items-end" />
       </div>
-      <div className="bg-wine w-full h-fit laptop:h-full rounded-t-full relative max-w-[560px] mx-auto flex-1">
+      <div className="bg-wine w-full h-fit laptop:h-full rounded-t-full relative tablet:max-w-[560px] mx-auto flex-1">
         <Image
           width={675}
           height={590}

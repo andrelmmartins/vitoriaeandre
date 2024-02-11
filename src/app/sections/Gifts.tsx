@@ -48,17 +48,13 @@ export default function Gifts() {
     }
   }, [filter]);
 
-  useEffect(() => {
-    setFilteredGifts(
-      gifts.sort((a, b) => {
-        if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
-        if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
-        if (!a.reservedBy && b.reservedBy) return -1;
-        if (a.reservedBy && !b.reservedBy) return 1;
-        return 0;
-      })
-    );
-  }, []);
+  const sorted = gifts.sort((a, b) => {
+    if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
+    if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
+    if (!a.reservedBy && b.reservedBy) return -1;
+    if (a.reservedBy && !b.reservedBy) return 1;
+    return 0;
+  });
 
   return (
     <section className="flex flex-wrap gap-2 container pb-[50px]">
@@ -90,7 +86,7 @@ export default function Gifts() {
             ))}
           </div>
           <ul className="w-full grid grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-[8px] tablet:gap-[16px] min-h-[250px]">
-            {filteredGifts.map((gift, index) => (
+            {(filter ? filteredGifts : sorted).map((gift, index) => (
               <li key={`gift-${index}`} className="col-span-1">
                 <Gift {...gift} />
               </li>

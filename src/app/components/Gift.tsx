@@ -39,7 +39,7 @@ export default function Gift(gift: GiftProps) {
         className="mt-[8px] tablet:mt-[16px] text-angle flex flex-col justify-between h-full"
         style={{ opacity: reservedToMe || !reservedBy ? 1 : 0.5 }}
       >
-        <h3 className=" !leading-tight text-[12px] micro:text-sm mobile:text-lg tablet:text-xl font-bold w-full">
+        <h3 className="!leading-tight text-[12px] micro:text-sm mobile:text-lg laptop:text-xl font-bold w-full">
           {name}
         </h3>
         <p className="text-sm font-bold text-wine-light hidden mobile:block">
