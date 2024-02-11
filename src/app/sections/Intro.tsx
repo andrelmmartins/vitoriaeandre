@@ -38,6 +38,7 @@ export default function Intro() {
           src="/polaroid.png"
           alt="Foto do Casal"
           className="laptop:absolute laptop:top-[32px] object-contain w-full h-[350px] mobile:h-[400px] laptop:h-[90%]"
+          fetchPriority="high"
         />
         <Icon
           id="ramo"

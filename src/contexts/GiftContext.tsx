@@ -10,6 +10,7 @@ interface Props {
 
   giftToReserve: Gift | undefined;
   setGiftToReserve: (gift: Gift | undefined) => void;
+  didIReserveThisGift: (gift: Gift) => boolean;
 
   list: () => Promise<void>;
   reserve: (props: airtable.ReserveProps) => Promise<boolean>;
@@ -62,12 +63,10 @@ export default function GiftProvider(props: { children: React.ReactNode }) {
 
   async function reserve(props: airtable.ReserveProps) {
     try {
-      localStorage.setItem(
-        localStorageItem,
-        JSON.stringify({
-          giftsThatIReserve: [...giftsThatIReserve, props.id],
-        })
-      );
+      loadGiftsThatIReserve();
+
+      if (props.resersedBy) saveGiftThatIReserve(props.id);
+      else takeOutMyReserve(props.id);
 
       const response = await airtable.reserve(props);
 
@@ -97,9 +96,13 @@ export default function GiftProvider(props: { children: React.ReactNode }) {
     }
   }
 
+  function didIReserveThisGift(gift: Gift) {
+    return giftsThatIReserve.includes(gift.id);
+  }
+
   const localStorageItem = "vitoriaeandre-gifts-that-i-reserve";
 
-  useEffect(() => {
+  function loadGiftsThatIReserve() {
     if (typeof window !== "undefined") {
       const data = localStorage.getItem(localStorageItem);
 
@@ -115,12 +118,48 @@ export default function GiftProvider(props: { children: React.ReactNode }) {
               (g: any) => typeof g === "string"
             );
 
-            setGiftToReserve(giftsThatIReserve);
+            setGiftsThatIReserve(giftsThatIReserve);
           }
         }
-      } catch (e) {}
+      } catch (e) {
+        console.log(e);
+      }
     }
+  }
 
+  function saveGiftThatIReserve(giftId: Gift["id"]) {
+    const newGiftsThatIReserve = [...giftsThatIReserve, giftId];
+
+    localStorage.setItem(
+      "localStorageItem",
+      JSON.stringify({
+        giftsThatIReserve: newGiftsThatIReserve,
+      })
+    );
+
+    setGiftsThatIReserve(newGiftsThatIReserve);
+  }
+
+  function takeOutMyReserve(giftId: Gift["id"]) {
+    const newGiftsThatIReserve = giftsThatIReserve.filter(
+      (id) => id !== giftId
+    );
+
+    localStorage.setItem(
+      "localStorageItem",
+      JSON.stringify({
+        giftsThatIReserve: newGiftsThatIReserve,
+      })
+    );
+
+    setGiftsThatIReserve(newGiftsThatIReserve);
+  }
+
+  useEffect(() => {
+    loadGiftsThatIReserve();
+  }, []);
+
+  useEffect(() => {
     setGiftToReserve(undefined);
   }, []);
 
@@ -131,6 +170,7 @@ export default function GiftProvider(props: { children: React.ReactNode }) {
 
         giftToReserve,
         setGiftToReserve,
+        didIReserveThisGift,
 
         list,
         reserve,
