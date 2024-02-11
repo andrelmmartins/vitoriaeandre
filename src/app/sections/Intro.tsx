@@ -19,11 +19,11 @@ export default function Intro() {
   }, []);
 
   return (
-    <section className="laptop:h-screen laptop:max-h-[800px] container pt-[64px] grid laptop:grid-cols-2 relative">
+    <section className="laptop:h-screen laptop:max-h-[800px] container pt-[64px] grid laptop:grid-cols-2">
       <div className="flex flex-col justify-between h-full gap-[48px] items-center laptop:items-start pb-[64px]">
         <Icon id="logo" className="h-[100px] w-[47px]" />
 
-        <h1 className="text-[70px] laptop:text-[100px] text-center laptop:text-center ">
+        <h1 className="text-[70px] laptop:text-[100px] text-center laptop:text-left text-angle">
           Vitória
           <br />
           &André
@@ -39,11 +39,11 @@ export default function Intro() {
           alt="Foto do Casal"
           className="laptop:absolute laptop:top-[32px] object-contain w-full h-[350px] mobile:h-[400px] laptop:h-[90%]"
         />
+        <Icon
+          id="ramo"
+          className="absolute top-0 right-0 w-[80px] h-[40px] hidden laptop:block"
+        />
       </div>
-      <Icon
-        id="ramo"
-        className="absolute top-[64px] right-0 w-[80px] h-[40px] hidden laptop:block"
-      />
     </section>
   );
 }

@@ -8,9 +8,14 @@
     src: url("/fonts/angle.otf") format("opentype");
   }
 
-  h1 {
+  .text-angle {
     font-family: "Angle", serif;
-    line-height: 0.9;
+    line-height: 0.9 !important;
+    margin-top: 0.9%;
+  }
+
+  .text-angle p {
+    margin-top: 5px;
   }
 
   .container {
@@ -33,5 +38,23 @@
   *::-webkit-scrollbar-track {
     background-color: #e1c3b8;
     border-radius: 4px;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    background-color: transparent;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  input:-moz-autofill {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+  input:-ms-input-placeholder {
+    background-color: transparent !important;
+    color: inherit !important;
   }
 }

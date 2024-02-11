@@ -1,5 +1,5 @@
 export interface Props {
-  id: "logo" | "ramo";
+  id: "logo" | "ramo" | "close" | "click" | "progress";
   className?: HTMLElement["className"];
 }
 
