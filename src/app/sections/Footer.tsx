@@ -4,7 +4,7 @@ export default function Footer() {
       <p className="text-md text-beige">
         Desenvolvido por André{" "}
         <span className="text-sm text-wine-light">
-          (Inspecionado por Vitória)
+          (Gerenciado por Vitória)
         </span>
       </p>
     </footer>
