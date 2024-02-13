@@ -134,7 +134,7 @@ export default function ModalReserveTo({ reloadGifts }: Props) {
                       className="!p-[8px] absolute top-[8px] right-[8px]"
                       onClick={() => router.push(gift.link)}
                     >
-                      <p>Acessar site</p>
+                      <p>Comprar</p>
                     </Button>
                   </div>
 
