@@ -1,3 +1,4 @@
+import Footer from "./sections/Footer";
 import Gifts from "./sections/Gifts";
 import Intro from "./sections/Intro";
 import Separator from "./sections/Separator";
@@ -8,6 +9,7 @@ export default function GiftsList() {
       <Intro />
       <Separator />
       <Gifts />
+      <Footer />
     </main>
   );
 }

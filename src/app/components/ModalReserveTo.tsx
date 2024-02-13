@@ -121,7 +121,7 @@ export default function ModalReserveTo({ reloadGifts }: Props) {
             </div>
             {gift && (
               <div className="bg-beige p-[16px] flex flex-col gap-[16px]">
-                <div className="border-[2px] rounded-md border-beige-medium p-[12px] flex flex-col gap-[8px] text-angle mt-0">
+                <div className="border-[2px] rounded-t-md border-beige-medium p-[12px] flex flex-col gap-[8px] text-angle mt-0">
                   <div className="p-[8px] bg-white rounded overflow-hidden relative">
                     <Image
                       src={gift.image?.url ?? ""}
@@ -146,8 +146,8 @@ export default function ModalReserveTo({ reloadGifts }: Props) {
                   </div>
                 </div>
 
-                <p className="text-angle text-wine-light opacity-70 font-bold text-xs !leading-[1]">
-                  * Obs: Não se prendam aos valores ou loja em que encontramos
+                <p className="text-angle text-wine-light font-bold text-[12px] !leading-tight bg-beige-medium p-[12px] rounded-b mt-[-16px]">
+                  OBS: Não se prendam aos valores ou loja em que encontramos
                   este presente. Pode ficar à vontade para procurar variações
                   mais em conta.
                 </p>
@@ -157,7 +157,7 @@ export default function ModalReserveTo({ reloadGifts }: Props) {
                     <input
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="bg-beige-medium h-[50px] rounded placeholder:text-wine-light placeholder:font-bold text-angle font-bold text-wine p-[12px] pt-[18px] w-full focus:outline-beige-dark"
+                      className="bg-beige-medium h-[50px] rounded placeholder:text-wine-medium placeholder:font-bold text-angle font-bold text-wine p-[12px] pt-[18px] w-full focus:outline-beige-dark"
                       placeholder="Seu nome"
                     />
                     {showRequiredError && (

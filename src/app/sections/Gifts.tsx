@@ -33,28 +33,18 @@ export default function Gifts() {
   }, []);
 
   useEffect(() => {
-    if (filter) {
-      setFilteredGifts(
-        gifts
-          .filter((gift) => gift.type === filter)
-          .sort((a, b) => {
-            if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
-            if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
-            if (!a.reservedBy && b.reservedBy) return -1;
-            if (a.reservedBy && !b.reservedBy) return 1;
-            return 0;
-          })
-      );
-    }
-  }, [filter]);
-
-  const sorted = gifts.sort((a, b) => {
-    if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
-    if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
-    if (!a.reservedBy && b.reservedBy) return -1;
-    if (a.reservedBy && !b.reservedBy) return 1;
-    return 0;
-  });
+    setFilteredGifts(
+      gifts
+        .filter((gift) => (filter ? gift.type === filter : true))
+        .sort((a, b) => {
+          if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
+          if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
+          if (!a.reservedBy && b.reservedBy) return -1;
+          if (a.reservedBy && !b.reservedBy) return 1;
+          return 0;
+        })
+    );
+  }, [filter, gifts]);
 
   return (
     <section className="flex flex-wrap gap-2 container pb-[50px]">
@@ -86,11 +76,15 @@ export default function Gifts() {
             ))}
           </div>
           <ul className="w-full grid grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-[8px] tablet:gap-[16px] min-h-[250px]">
-            {(filter ? filteredGifts : sorted).map((gift, index) => (
-              <li key={`gift-${index}`} className="col-span-1">
-                <Gift {...gift} />
-              </li>
-            ))}
+            {filteredGifts.length > 0 ? (
+              filteredGifts.map((gift, index) => (
+                <li key={`gift-${index}`} className="col-span-1">
+                  <Gift {...gift} />
+                </li>
+              ))
+            ) : (
+              <p>Nenhum presente cadastrado nessa área...</p>
+            )}
           </ul>
         </>
       )}

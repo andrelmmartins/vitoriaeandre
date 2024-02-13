@@ -22,7 +22,7 @@ export default function CountDown({
 
         return (
           <div className="flex flex-col items-center">
-            <span className="block text-white bg-green text-sm leading-none px-[20px] micro:px-[36px] py-[6px] z-[1] rounded-sm">
+            <span className="block text-white bg-green text-sm leading-none px-[20px] micro:px-[36px] py-[6px] z-[1] rounded-[4px]">
               Contagem regressiva
             </span>
             <div className="flex gap-[10px] -mt-[10px]">
@@ -59,7 +59,7 @@ export function CountDownSkeleton(props: {
 
   return (
     <div className={`flex flex-col items-center ${props.className}`}>
-      <span className="block text-white bg-green text-sm leading-none px-[20px] micro:px-[36px] py-[6px] z-[1] rounded-sm">
+      <span className="block text-white bg-green text-sm leading-none px-[20px] micro:px-[36px] py-[6px] z-[1] rounded-[4px]">
         Contagem regressiva
       </span>
       <div className="flex gap-[10px] -mt-[10px]">

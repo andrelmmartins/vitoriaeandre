@@ -14,7 +14,11 @@ const api = axios.create({
 });
 
 export const list = async () => {
-  return api.get("/");
+  return api.get("/", {
+    params: {
+      sort: [{ field: "price", direction: "asc" }], // sort by lower price
+    },
+  });
 };
 
 export interface ReserveProps {
