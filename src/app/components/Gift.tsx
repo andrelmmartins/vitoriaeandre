@@ -27,8 +27,8 @@ export default function Gift(gift: GiftProps) {
       >
         <Image
           src={image.url}
-          width={image.width}
-          height={image.height}
+          width={image.width / 3}
+          height={image.height / 3}
           className="h-full w-full object-contain mix-blend-multiply z-[5] rounded overflow-hidden"
           alt={`Imagem do Produto - ${name}`}
           fetchPriority="low"
