@@ -124,10 +124,10 @@ export default function ModalReserveTo({ reloadGifts }: Props) {
                 <div className="border-[2px] rounded-t-md border-beige-medium p-[12px] flex flex-col gap-[8px] text-angle mt-0">
                   <div className="p-[8px] bg-white rounded overflow-hidden relative">
                     <Image
-                      src={gift.image?.url ?? ""}
+                      src={gift.image.url}
                       alt={`Imagem - ${gift.name}`}
-                      width={gift.image?.width}
-                      height={gift.image?.height}
+                      width={gift.image.width / 3}
+                      height={gift.image.height / 3}
                       className=" mix-blend-multiply w-full h-[150px] object-contain"
                     />
                     <Button
