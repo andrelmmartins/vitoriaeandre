@@ -25,10 +25,10 @@ export default function Gift(gift: GiftProps) {
         className="bg-white h-[150px] tablet:h-[250px] p-[8px] rounded overflow-hidden shrink-0"
         style={{ opacity: reservedToMe || !reservedBy ? 1 : 0.5 }}
       >
-        <Image
+        <img
           src={image.url}
-          width={image.width}
-          height={image.height}
+          width={image.width / 3}
+          height={image.height / 3}
           className="h-full w-full object-contain mix-blend-multiply z-[5] rounded overflow-hidden"
           alt={`Imagem do Produto - ${name}`}
           fetchPriority="low"

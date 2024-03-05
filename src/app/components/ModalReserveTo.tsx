@@ -46,7 +46,7 @@ export default function ModalReserveTo({ reloadGifts }: Props) {
         setTimeout(() => {
           setLoading(false);
           setAreYouSure(true);
-        }, 500);
+        }, 200);
       } else await handleGetMyReservation(gift);
     } else {
       if (!iWantReserve) setIWantReserve(true);
@@ -123,18 +123,18 @@ export default function ModalReserveTo({ reloadGifts }: Props) {
               <div className="bg-beige p-[16px] flex flex-col gap-[16px]">
                 <div className="border-[2px] rounded-t-md border-beige-medium p-[12px] flex flex-col gap-[8px] text-angle mt-0">
                   <div className="p-[8px] bg-white rounded overflow-hidden relative">
-                    <Image
-                      src={gift.image?.url ?? ""}
+                    <img
+                      src={gift.image.url}
                       alt={`Imagem - ${gift.name}`}
-                      width={gift.image?.width}
-                      height={gift.image?.height}
-                      className=" mix-blend-multiply w-full h-[150px] object-contain"
+                      width={gift.image.width / 3}
+                      height={gift.image.height / 3}
+                      className="mix-blend-multiply w-full h-[150px] object-contain"
                     />
                     <Button
                       className="!p-[8px] absolute top-[8px] right-[8px]"
                       onClick={() => router.push(gift.link)}
                     >
-                      <p>Acessar site</p>
+                      <p>Comprar</p>
                     </Button>
                   </div>
 
