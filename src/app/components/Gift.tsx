@@ -16,7 +16,7 @@ export default function Gift(gift: GiftProps) {
     >
       {reservedBy && (
         <>
-          <span className="bg-wine shadow-md absolute top-[9%] left-[-15%] h-[35px] !leading-none w-[125%] text-beige rotate-[-15deg] px-[20%] z-[1] text-[11px] micro:text-sm tablet:text-md desktop:text-lg flex items-center">
+          <span className="bg-wine shadow-md absolute top-[9%] left-[-15%] min-h-[35px] h-fit py-2 !leading-none w-[125%] text-beige rotate-[-15deg] px-[20%] z-[1] text-[11px] micro:text-sm tablet:text-md desktop:text-lg flex items-center">
             {`Reservado para ${reservedToMe ? "Você" : reservedBy}`}
           </span>
         </>
