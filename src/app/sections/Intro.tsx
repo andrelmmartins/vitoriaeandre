@@ -7,7 +7,7 @@ import CountDown, { CountDownSkeleton } from "../components/CountDown";
 import Icon from "../components/Icon";
 import Image from "next/image";
 
-export default function Intro() {
+export default function Intro(props: { hideCountDown?: boolean }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const section = document.getElementById("countdown");
@@ -29,9 +29,12 @@ export default function Intro() {
           &André
         </h1>
 
-        <CountDownSkeleton className="absolute bottom-[64px] left-1/2 -translate-x-1/2 laptop:translate-x-0 laptop:left-0" />
-
-        <div id="countdown" className="h-[81px] flex items-end" />
+        {!props.hideCountDown && (
+          <>
+            <CountDownSkeleton className="absolute bottom-[64px] left-1/2 -translate-x-1/2 laptop:translate-x-0 laptop:left-0" />
+            <div id="countdown" className="h-[81px] flex items-end" />
+          </>
+        )}
       </div>
       <div className="bg-wine w-full h-fit laptop:h-full rounded-t-full relative tablet:max-w-[560px] mx-auto flex-1">
         <Image
