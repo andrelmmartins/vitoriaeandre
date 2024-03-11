@@ -11,7 +11,7 @@ interface Props {
 export default function BingoSquare(props: Props) {
   return (
     <div
-      onClick={props.onClick}
+      onClick={props.logo ? undefined : props.onClick}
       className={`h-16 w-16 tablet:h-20 tablet:w-20 flex items-center justify-center text-3xl ${
         props.headSquare || props.logo
           ? "bg-wine-medium text-beige text-4xl"

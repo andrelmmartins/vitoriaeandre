@@ -11,6 +11,9 @@ interface ContextProps {
     number: string;
     selected: boolean;
   }[];
+
+  bingo: boolean;
+  hideBingo: () => void;
 }
 
 const BingoContext = createContext({} as ContextProps);
@@ -21,6 +24,18 @@ export default function BingoProvider(props: { children: React.ReactNode }) {
   >([]);
 
   const [loading, setLoading] = useState(true);
+
+  const [bingo, setBingo] = useState(false);
+  const [alreadyBingo, setAlreadyBingo] = useState(false);
+
+  const hasSomeNotSelected = drawedNumbers.some(({ selected }) => !selected);
+
+  useEffect(() => {
+    if (drawedNumbers.length > 0 && !hasSomeNotSelected && !alreadyBingo) {
+      setBingo(true);
+      setAlreadyBingo(true);
+    }
+  }, [hasSomeNotSelected]);
 
   function drawANumber(min: number, max: number) {
     return Math.ceil(Math.random() * (max - min)) + min;
@@ -44,13 +59,14 @@ export default function BingoProvider(props: { children: React.ReactNode }) {
         .slice(0, 12)
         .map((n) => ({ number: n.toString(), selected: false })),
 
-      { number: "logo", selected: false },
+      { number: "logo", selected: true },
 
       ...numbers
         .slice(12, 24)
         .map((n) => ({ number: n.toString(), selected: false })),
     ]);
 
+    setAlreadyBingo(false);
     setLoading(false);
   }
 
@@ -80,6 +96,9 @@ export default function BingoProvider(props: { children: React.ReactNode }) {
         drawNumbers,
         selectANumber,
         drawedNumbers,
+
+        bingo,
+        hideBingo: () => setBingo(false),
       }}
     >
       {props.children}
