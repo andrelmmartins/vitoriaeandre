@@ -1,13 +1,22 @@
+"use client";
+
+import Button from "@/app/components/Button";
 import BingoSquare from "./BingoSquare";
 
 import { useBingo } from "@/contexts/BingoContext";
 
 export default function BingoCard() {
-  const { drawedNumbers, selectANumber } = useBingo();
+  const { drawedNumbers, selectANumber, drawNumbers } = useBingo();
 
   return (
-    <div className="container">
-      <div className="rounded-xl border border-wine-medium bg-wine-medium overflow-hidden mb-[50px] tablet:mb-[150px] mx-auto flex flex-col w-fit">
+    <div className="container flex flex-col items-center">
+      <Button
+        className="!bg-green !text-white rounded-b-none"
+        onClick={drawNumbers}
+      >
+        Sortear cartela
+      </Button>
+      <div className="rounded-xl border border-wine-medium bg-wine-medium overflow-hidden mb-[50px] tablet:mb-[150px] flex flex-col w-fit">
         <div className="flex">
           <BingoSquare text="B" headSquare />
           <BingoSquare text="I" headSquare />

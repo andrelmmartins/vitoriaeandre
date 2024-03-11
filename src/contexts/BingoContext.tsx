@@ -22,35 +22,33 @@ export default function BingoProvider(props: { children: React.ReactNode }) {
 
   const [loading, setLoading] = useState(true);
 
+  function drawANumber(min: number, max: number) {
+    return Math.ceil(Math.random() * (max - min)) + min;
+  }
+
   function drawNumbers() {
     setLoading(true);
 
+    const numbers: number[] = [];
+
+    while (numbers.length < 25) {
+      const min = Math.floor(numbers.length / 5) * 18;
+      const max = Math.floor(numbers.length / 5) * 18 + 18;
+
+      const drawedNumber = drawANumber(min, max);
+      if (!numbers.includes(drawedNumber)) numbers.push(drawedNumber);
+    }
+
     setDrawedNumbers([
-      { number: "1", selected: false },
-      { number: "2", selected: false },
-      { number: "3", selected: false },
-      { number: "4", selected: false },
-      { number: "5", selected: false },
-      { number: "6", selected: false },
-      { number: "7", selected: false },
-      { number: "8", selected: false },
-      { number: "9", selected: false },
-      { number: "10", selected: false },
-      { number: "11", selected: false },
-      { number: "12", selected: false },
+      ...numbers
+        .slice(0, 12)
+        .map((n) => ({ number: n.toString(), selected: false })),
+
       { number: "logo", selected: false },
-      { number: "13", selected: false },
-      { number: "14", selected: false },
-      { number: "15", selected: false },
-      { number: "16", selected: false },
-      { number: "17", selected: false },
-      { number: "18", selected: false },
-      { number: "19", selected: false },
-      { number: "20", selected: false },
-      { number: "21", selected: false },
-      { number: "22", selected: false },
-      { number: "23", selected: false },
-      { number: "24", selected: false },
+
+      ...numbers
+        .slice(12, 24)
+        .map((n) => ({ number: n.toString(), selected: false })),
     ]);
 
     setLoading(false);
