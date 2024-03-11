@@ -65,4 +65,8 @@
   #bingo-card div:nth-of-type(25) {
     border-radius: 0 0 12px 0;
   }
+
+  * {
+    touch-action: manipulation;
+  }
 }

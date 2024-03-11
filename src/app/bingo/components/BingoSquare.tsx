@@ -12,7 +12,7 @@ export default function BingoSquare(props: Props) {
   return (
     <div
       onClick={props.onClick}
-      className={`h-20 w-20 flex items-center justify-center text-3xl ${
+      className={`h-16 w-16 tablet:h-20 tablet:w-20 flex items-center justify-center text-3xl ${
         props.headSquare || props.logo
           ? "bg-wine-medium text-beige text-4xl"
           : "bg-beige text-wine-medium border border-wine-medium cursor-pointer"
@@ -22,7 +22,7 @@ export default function BingoSquare(props: Props) {
         <Icon id="logo" className="h-12" />
       ) : (
         <span
-          className={`flex items-center justify-center h-16 w-16 rounded-full transtion-all duration-300 ${
+          className={`flex items-center justify-center h-12 w-12 tablet:h-16 tablet:w-16 rounded-full transtion-all duration-300 ${
             props.selected ? "bg-beige-dark text-wine" : ""
           }`}
         >

@@ -7,7 +7,7 @@ export default function BingoCard() {
 
   return (
     <div className="container">
-      <div className="rounded-xl border border-wine-medium bg-wine-medium overflow-hidden mb-[150px] mx-auto flex flex-col w-fit">
+      <div className="rounded-xl border border-wine-medium bg-wine-medium overflow-hidden mb-[50px] tablet:mb-[150px] mx-auto flex flex-col w-fit">
         <div className="flex">
           <BingoSquare text="B" headSquare />
           <BingoSquare text="I" headSquare />
@@ -15,7 +15,10 @@ export default function BingoCard() {
           <BingoSquare text="G" headSquare />
           <BingoSquare text="O" headSquare />
         </div>
-        <div className="flex flex-col flex-wrap max-h-[25rem]" id="bingo-card">
+        <div
+          className="flex flex-col flex-wrap max-h-[20rem] tablet:max-h-[25rem]"
+          id="bingo-card"
+        >
           {drawedNumbers.map(({ number, selected }, i) => (
             <BingoSquare
               key={number}

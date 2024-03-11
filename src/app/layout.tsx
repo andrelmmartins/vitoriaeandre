@@ -21,6 +21,10 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <title>Lista de Presentes · Vitória & André</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
       </head>
       <body className={`bg-beige text-wine ${font.className}`}>
         <Providers>{children}</Providers>
