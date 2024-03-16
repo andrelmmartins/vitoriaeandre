@@ -24,18 +24,15 @@ export default function BingoProvider(props: { children: React.ReactNode }) {
   >([]);
 
   const [loading, setLoading] = useState(true);
-
   const [bingo, setBingo] = useState(false);
-  const [alreadyBingo, setAlreadyBingo] = useState(false);
-
-  const hasSomeNotSelected = drawedNumbers.some(({ selected }) => !selected);
 
   useEffect(() => {
-    if (drawedNumbers.length > 0 && !hasSomeNotSelected && !alreadyBingo) {
+    const hasSomeNotSelected = drawedNumbers.some(({ selected }) => !selected);
+
+    if (drawedNumbers.length > 0 && !hasSomeNotSelected) {
       setBingo(true);
-      setAlreadyBingo(true);
-    }
-  }, [hasSomeNotSelected]);
+    } else setBingo(false);
+  }, [drawedNumbers]);
 
   function drawANumber(min: number, max: number) {
     return Math.ceil(Math.random() * (max - min)) + min;
@@ -47,8 +44,8 @@ export default function BingoProvider(props: { children: React.ReactNode }) {
     const numbers: number[] = [];
 
     while (numbers.length < 25) {
-      const min = Math.floor(numbers.length / 5) * 18;
-      const max = Math.floor(numbers.length / 5) * 18 + 18;
+      const min = Math.floor(numbers.length / 5) * 15;
+      const max = Math.floor(numbers.length / 5) * 15 + 15;
 
       const drawedNumber = drawANumber(min, max);
       if (!numbers.includes(drawedNumber)) numbers.push(drawedNumber);
@@ -66,7 +63,6 @@ export default function BingoProvider(props: { children: React.ReactNode }) {
         .map((n) => ({ number: n.toString(), selected: false })),
     ]);
 
-    setAlreadyBingo(false);
     setLoading(false);
   }
 

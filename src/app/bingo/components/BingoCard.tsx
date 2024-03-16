@@ -13,13 +13,13 @@ export default function BingoCard() {
   return (
     <>
       <div className="container flex flex-col items-center relative">
-        <Button
+        {/* <Button
           className="!bg-green !text-white rounded-b-none z-[1]"
           onClick={drawNumbers}
         >
           Sortear cartela
-        </Button>
-        <div className="rounded-xl border text-wine-medium border-wine-medium bg-wine-medium overflow-hidden mb-[50px] tablet:mb-[150px] flex flex-col w-fit">
+        </Button> */}
+        <div className="rounded-xl z-[1] border text-wine-medium border-wine-medium bg-wine-medium overflow-hidden mb-[50px] tablet:mb-[150px] flex flex-col w-fit">
           <div className="flex">
             <BingoSquare text="B" headSquare />
             <BingoSquare text="I" headSquare />
@@ -45,7 +45,7 @@ export default function BingoCard() {
         {bingo && (
           <Fireworks
             className="w-full h-full absolute top-0 left-0"
-            autorun={{ speed: 1 }}
+            autorun={{ speed: 1, duration: 10000 }}
           />
         )}
       </div>
