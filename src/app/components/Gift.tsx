@@ -1,6 +1,10 @@
 import { formatCurrency, useGifts } from "@/contexts/GiftContext";
 import { Gift as GiftProps } from "@/interfaces/gift";
 
+export const normalizeReservedBy = (reservedBy: string) => {
+  return reservedBy.trim()
+}
+
 export default function Gift(gift: GiftProps) {
   const { setGiftToReserve, didIReserveThisGift } = useGifts();
 
@@ -8,7 +12,7 @@ export default function Gift(gift: GiftProps) {
 
   const reservedToMe = didIReserveThisGift(gift);
 
-  const isReserved = reservedBy.trim().length > 1 || reservedToMe
+  const isReserved = normalizeReservedBy(reservedBy).length > 1 || reservedToMe
 
   return (
     <div
@@ -22,7 +26,7 @@ export default function Gift(gift: GiftProps) {
       )}
       <div
         className="bg-white h-[150px] tablet:h-[250px] p-[8px] rounded overflow-hidden shrink-0"
-        style={{ opacity: isReserved ? 1 : 0.5 }}
+        style={{ opacity: !isReserved ? 1 : 0.5 }}
       >
         <img
           src={image.url}
@@ -36,7 +40,7 @@ export default function Gift(gift: GiftProps) {
       </div>
       <div
         className="mt-[8px] tablet:mt-[16px] text-angle flex flex-col justify-between h-full"
-        style={{ opacity: isReserved ? 1 : 0.5 }}
+        style={{ opacity: !isReserved ? 1 : 0.5 }}
       >
         <h3 className="!leading-tight text-[12px] micro:text-sm mobile:text-lg desktop:text-xl font-bold w-full">
           {name}

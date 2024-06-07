@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { useGifts } from "@/contexts/GiftContext";
 
-import Gift from "../components/Gift";
+import Gift, { normalizeReservedBy } from "../components/Gift";
 import Loading from "../components/Loading";
 import ModalReserveTo from "../components/ModalReserveTo";
 import {
@@ -39,8 +39,8 @@ export default function Gifts() {
         .sort((a, b) => {
           if (didIReserveThisGift(a) && !didIReserveThisGift(b)) return -1;
           if (!didIReserveThisGift(a) && didIReserveThisGift(b)) return 1;
-          if (!a.reservedBy && b.reservedBy) return -1;
-          if (a.reservedBy && !b.reservedBy) return 1;
+          if (!normalizeReservedBy(a.reservedBy) && !!normalizeReservedBy(b.reservedBy)) return -1;
+          if (!!normalizeReservedBy(a.reservedBy) && !normalizeReservedBy(b.reservedBy)) return 1;
           return 0;
         })
     );
