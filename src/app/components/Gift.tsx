@@ -1,6 +1,5 @@
 import { formatCurrency, useGifts } from "@/contexts/GiftContext";
 import { Gift as GiftProps } from "@/interfaces/gift";
-import Image from "next/image";
 
 export default function Gift(gift: GiftProps) {
   const { setGiftToReserve, didIReserveThisGift } = useGifts();
@@ -9,21 +8,21 @@ export default function Gift(gift: GiftProps) {
 
   const reservedToMe = didIReserveThisGift(gift);
 
+  const isReserved = reservedBy.trim().length > 1 || reservedToMe
+
   return (
     <div
       className="p-[8px] tablet:p-[16px] rounded-lg bg-beige-medium h-full w-full cursor-pointer relative overflow-hidden flex flex-col"
       onClick={() => setGiftToReserve(gift)}
     >
-      {reservedBy && (
-        <>
+      {isReserved && (
           <span className="bg-wine shadow-md absolute top-[9%] left-[-15%] min-h-[35px] h-fit py-2 !leading-none w-[125%] text-beige rotate-[-15deg] px-[20%] z-[1] text-[11px] micro:text-sm tablet:text-md desktop:text-lg flex items-center">
             {`Reservado para ${reservedToMe ? "Você" : reservedBy}`}
           </span>
-        </>
       )}
       <div
         className="bg-white h-[150px] tablet:h-[250px] p-[8px] rounded overflow-hidden shrink-0"
-        style={{ opacity: reservedToMe || !reservedBy ? 1 : 0.5 }}
+        style={{ opacity: isReserved ? 1 : 0.5 }}
       >
         <img
           src={image.url}
@@ -37,7 +36,7 @@ export default function Gift(gift: GiftProps) {
       </div>
       <div
         className="mt-[8px] tablet:mt-[16px] text-angle flex flex-col justify-between h-full"
-        style={{ opacity: reservedToMe || !reservedBy ? 1 : 0.5 }}
+        style={{ opacity: isReserved ? 1 : 0.5 }}
       >
         <h3 className="!leading-tight text-[12px] micro:text-sm mobile:text-lg desktop:text-xl font-bold w-full">
           {name}

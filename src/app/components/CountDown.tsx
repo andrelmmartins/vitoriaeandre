@@ -7,7 +7,7 @@ export interface Props {
 }
 
 export default function CountDown({
-  date = new Date("2024/03/16 13:00 -03:00"),
+  date = new Date("2024/06/14 18:30 -03:00"),
 }: Props) {
   return (
     <Countdown
